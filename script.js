@@ -7,7 +7,6 @@ const REVEAL_ROOT_MARGIN = "0px 0px -32px 0px";
 
 const DEFAULT_HERO = {
   main: "./asset/img/水やり.jpg",
-  subA: "./asset/img/土.jpg",
   subB: "./asset/img/苗.avif",
 };
 
@@ -51,12 +50,11 @@ function setImg(id, src, alt) {
 
 function initHeroPhotos(photos) {
   const list = Array.isArray(photos) ? photos.filter((p) => p && p.src) : [];
-  const main = list[1] || list[0];
-  const subA = list[0] || list[1];
-  const subB = list[2] || list[0];
+  const main =
+    list.find((p) => p.src.includes("水やり")) || list[1] || list[0];
+  const subB = list.find((p) => p.src.includes("苗")) || list[2];
 
   setImg("heroMainImg", main?.src || DEFAULT_HERO.main, main?.alt || "水やりの様子");
-  setImg("heroSubImgA", subA?.src || DEFAULT_HERO.subA, subA?.alt || "土");
   setImg("heroSubImgB", subB?.src || DEFAULT_HERO.subB, subB?.alt || "苗");
 }
 
@@ -90,10 +88,6 @@ function renderFarmData() {
   setText(
     "heroCatchCopy",
     farm.catchCopy || "農園ならではの魅力を、情報確認後に掲載します"
-  );
-  setText(
-    "heroSubCopy",
-    farm.subCopy || "Instagram・Threadsで発信中の情報を、このページに整理しています。"
   );
   setText("aboutText", farm.about || "農園の紹介文は、事業者ヒアリング後に掲載します。");
 
@@ -222,13 +216,11 @@ function renderPhotos(containerId, photos) {
     return;
   }
 
-  const layouts = ["photo-mosaic__item--large", "photo-mosaic__item--offset", ""];
   container.innerHTML = list
-    .map((p, i) => {
+    .map((p) => {
       const src = assetPath(p.src.startsWith("./") ? p.src : `./${p.src}`);
-      const layoutClass = layouts[i % layouts.length];
       return `
-      <figure class="photo-mosaic__item ${layoutClass} fade-up">
+      <figure class="photo-mosaic__item fade-up">
         <img src="${escapeAttr(src)}" alt="${escapeAttr(p.alt)}" loading="lazy" width="600" height="450" />
         ${p.caption ? `<figcaption>${escapeHtml(p.caption)}</figcaption>` : ""}
       </figure>`;
