@@ -1,6 +1,7 @@
 // 農家LP — GitHub Pages 対応
 
 const PLACEHOLDER = "要確認";
+const DEFAULT_FARM_NAME = "●●農園";
 const REVEAL_SELECTOR = ".fade-up";
 const REVEAL_THRESHOLD = 0.1;
 const REVEAL_ROOT_MARGIN = "0px 0px -40px 0px";
@@ -39,7 +40,7 @@ function setHref(id, url) {
 function renderFarmData() {
   const farm = window.FARM || {};
 
-  const displayName = textOrPlaceholder(farm.name, "農園名（要確認）");
+  const displayName = textOrPlaceholder(farm.name, DEFAULT_FARM_NAME);
   const region = farm.region ? `${farm.region}の` : "";
   const products = farm.mainProducts || "農産物";
 
@@ -61,12 +62,8 @@ function renderFarmData() {
 
   setText("navBrand", displayName);
   setText("footerBrand", displayName);
-  setText("heroFarmName", displayName);
+  setText("heroTitle", displayName);
 
-  setText(
-    "heroCatchCopy",
-    farm.catchCopy || "農園の情報を、少しずつこのページに集めています"
-  );
   setText(
     "heroSubCopy",
     farm.subCopy || "Instagram・Threadsで発信予定の情報を、見やすく整理しています。"
@@ -95,7 +92,6 @@ function renderFarmData() {
   setupSns(farm);
   renderFaq("faqList", farm.faq);
   renderPhotos("photoGallery", farm.photos);
-  renderMissingNotice();
   updateStructuredData(farm, displayName, description);
 }
 
@@ -196,13 +192,6 @@ function renderPhotos(containerId, photos) {
       </figure>`;
     })
     .join("");
-}
-
-function renderMissingNotice() {
-  const audit = window.FARM_INFO_AUDIT;
-  const container = document.getElementById("missingList");
-  if (!container || !audit?.missing?.length) return;
-  container.innerHTML = audit.missing.map((item) => `<li>${escapeHtml(item)}</li>`).join("");
 }
 
 function updateStructuredData(farm, name, description) {
