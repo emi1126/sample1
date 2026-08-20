@@ -7,7 +7,6 @@ const REVEAL_ROOT_MARGIN = "0px 0px -32px 0px";
 
 const DEFAULT_HERO = {
   main: "./asset/img/水やり.jpg",
-  subB: "./asset/img/苗.avif",
 };
 
 function assetPath(relativePath) {
@@ -52,16 +51,14 @@ function initHeroPhotos(photos) {
   const list = Array.isArray(photos) ? photos.filter((p) => p && p.src) : [];
   const main =
     list.find((p) => p.src.includes("水やり")) || list[1] || list[0];
-  const subB = list.find((p) => p.src.includes("苗")) || list[2];
 
   setImg("heroMainImg", main?.src || DEFAULT_HERO.main, main?.alt || "水やりの様子");
-  setImg("heroSubImgB", subB?.src || DEFAULT_HERO.subB, subB?.alt || "苗");
 }
 
 function renderFarmData() {
   const farm = window.FARM || {};
 
-  const displayName = textOrPlaceholder(farm.name, "農園名（要確認）");
+  const displayName = textOrPlaceholder(farm.name, "○○農園");
   const region = farm.region ? `${farm.region}の` : "";
   const products = farm.mainProducts || "農産物";
 
@@ -85,10 +82,6 @@ function renderFarmData() {
   setText("footerBrand", displayName);
   setText("heroFarmName", displayName);
 
-  setText(
-    "heroCatchCopy",
-    farm.catchCopy || "農園ならではの魅力を、情報確認後に掲載します"
-  );
   setText("aboutText", farm.about || "農園の紹介文は、事業者ヒアリング後に掲載します。");
 
   initHeroPhotos(farm.photos);
@@ -114,7 +107,6 @@ function renderFarmData() {
   setupSns(farm);
   renderFaq("faqList", farm.faq);
   renderPhotos("photoGallery", farm.photos);
-  renderMissingNotice();
   updateStructuredData(farm, displayName, description);
 }
 
@@ -226,13 +218,6 @@ function renderPhotos(containerId, photos) {
       </figure>`;
     })
     .join("");
-}
-
-function renderMissingNotice() {
-  const audit = window.FARM_INFO_AUDIT;
-  const container = document.getElementById("missingList");
-  if (!container || !audit?.missing?.length) return;
-  container.innerHTML = audit.missing.map((item) => `<li>${escapeHtml(item)}</li>`).join("");
 }
 
 function updateStructuredData(farm, name, description) {

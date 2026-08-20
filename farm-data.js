@@ -33,7 +33,7 @@ window.FARM_INFO_AUDIT = {
 };
 
 window.FARM = {
-  name: null,
+  name: "○○農園",
   region: null,
   mainProducts: null,
   catchCopy: null,

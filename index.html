@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>農園名（要確認） | 農産物の直売・農園</title>
+  <title>○○農園 | 農産物の直売・農園</title>
   <meta name="description" content="農園の営業時間・アクセス・購入方法をスマホで確認できます。" />
-  <meta property="og:title" content="農園名（要確認）" />
+  <meta property="og:title" content="○○農園" />
   <meta property="og:description" content="農園の営業時間・アクセス・購入方法をスマホで確認できます。" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ja_JP" />
@@ -19,7 +19,7 @@
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "農園名（要確認）",
+    "name": "○○農園",
     "description": "農園の直売・来店情報",
     "address": { "@type": "PostalAddress", "addressCountry": "JP" }
   }
@@ -30,7 +30,7 @@
 
   <nav class="site-nav" id="siteNav" aria-label="ページ内ナビゲーション">
     <div class="site-nav__inner">
-      <a href="./" class="site-nav__brand" id="navBrand">農園名（要確認）</a>
+      <a href="./" class="site-nav__brand" id="navBrand">○○農園</a>
       <ul class="site-nav__list" role="list">
         <li><a class="site-nav__link" href="#about">農園について</a></li>
         <li><a class="site-nav__link" href="#products">農産物</a></li>
@@ -60,18 +60,12 @@
   </nav>
 
   <header class="hero">
-    <div class="hero__sky" aria-hidden="true"></div>
-    <div class="hero__photos" aria-hidden="true">
-      <figure class="hero__photo hero__photo--main">
-        <img id="heroMainImg" src="./asset/img/水やり.jpg" alt="" width="1200" height="900" fetchpriority="high" />
-      </figure>
-      <figure class="hero__photo hero__photo--sub hero__photo--sub-b">
-        <img id="heroSubImgB" src="./asset/img/苗.avif" alt="" width="600" height="450" loading="lazy" />
-      </figure>
+    <div class="hero__bg" aria-hidden="true">
+      <img id="heroMainImg" class="hero__bg-img" src="./asset/img/水やり.jpg" alt="" width="1200" height="900" fetchpriority="high" />
+      <div class="hero__overlay"></div>
     </div>
     <div class="hero__content fade-up">
-      <p class="hero__farm-name" id="heroFarmName">農園名（要確認）</p>
-      <h1 class="hero__catch" id="heroCatchCopy">農園ならではの魅力を、情報確認後に掲載します</h1>
+      <h1 class="hero__farm-name" id="heroFarmName">○○農園</h1>
       <dl class="hero__facts">
         <div><dt>営業</dt><dd id="heroHours">要確認</dd></div>
         <div><dt>場所</dt><dd id="heroAddress">要確認</dd></div>
@@ -125,7 +119,7 @@
       </div>
     </section>
 
-    <section class="section section--earth" id="purchase">
+    <section class="section section--earth section-block" id="purchase">
       <div class="wrap wrap--narrow purchase-block fade-up">
         <p class="section-kicker">買い方</p>
         <h2 class="section-heading section-heading--left">購入方法</h2>
@@ -197,7 +191,7 @@
       </div>
     </section>
 
-    <section class="section section--sky" id="access">
+    <section class="section section--sky section-block" id="access">
       <div class="wrap wrap--narrow access-block fade-up">
         <p class="section-kicker">アクセス</p>
         <h2 class="section-heading section-heading--left">地図・行き方</h2>
@@ -214,7 +208,7 @@
       </div>
     </section>
 
-    <section class="section section--base" id="faq">
+    <section class="section section--base section-block" id="faq">
       <div class="wrap wrap--narrow">
         <p class="section-kicker fade-up">FAQ</p>
         <h2 class="section-heading section-heading--left fade-up">よくあるご質問</h2>
@@ -222,7 +216,7 @@
       </div>
     </section>
 
-    <section class="section section--earth" id="contact">
+    <section class="section section--earth section-block" id="contact">
       <div class="wrap wrap--narrow contact-block fade-up">
         <p class="section-kicker">お問い合わせ</p>
         <h2 class="section-heading section-heading--left">ご質問・<br class="sp-only">ご相談</h2>
@@ -246,20 +240,11 @@
       </div>
     </section>
 
-    <section class="section section--audit" id="audit" aria-label="制作時の確認事項">
-      <div class="wrap wrap--narrow">
-        <p class="section-kicker fade-up">FOR STAFF</p>
-        <h2 class="section-heading section-heading--left fade-up">掲載前チェック</h2>
-        <p class="section-note fade-up">公開前に <code>farm-data.js</code> を更新してください。</p>
-        <ul class="audit-list fade-up" id="missingList"></ul>
-      </div>
-    </section>
-
   </main>
 
   <footer class="footer">
-    <p class="footer__brand" id="footerBrand">農園名（要確認）</p>
-    <p class="footer__copy">&copy; <span id="metaFarmName">農園名（要確認）</span></p>
+    <p class="footer__brand" id="footerBrand">○○農園</p>
+    <p class="footer__copy">&copy; <span id="metaFarmName">○○農園</span></p>
   </footer>
 
   <div class="sticky-cta" id="stickyCta" aria-label="クイック操作">
