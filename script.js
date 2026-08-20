@@ -1,11 +1,10 @@
-// 農家LP - GitHub Pages 対応（静的サイト・相対パス）
+// 農家LP — GitHub Pages 対応
 
 const PLACEHOLDER = "要確認";
 const REVEAL_SELECTOR = ".fade-up";
-const REVEAL_THRESHOLD = 0.12;
-const REVEAL_ROOT_MARGIN = "0px 0px -32px 0px";
+const REVEAL_THRESHOLD = 0.1;
+const REVEAL_ROOT_MARGIN = "0px 0px -40px 0px";
 
-/** GitHub Pages サブディレクトリ公開でも動く相対パス解決 */
 function assetPath(relativePath) {
   return new URL(relativePath.replace(/^\.\//, ""), document.baseURI).href;
 }
@@ -66,11 +65,11 @@ function renderFarmData() {
 
   setText(
     "heroCatchCopy",
-    farm.catchCopy || "農園ならではの魅力を、情報確認後に掲載します"
+    farm.catchCopy || "農園の情報を、少しずつこのページに集めています"
   );
   setText(
     "heroSubCopy",
-    farm.subCopy || "Instagram・Threadsで発信中の情報を、このページに整理しています。"
+    farm.subCopy || "Instagram・Threadsで発信予定の情報を、見やすく整理しています。"
   );
   setText("aboutText", farm.about || "農園の紹介文は、事業者ヒアリング後に掲載します。");
 
@@ -121,33 +120,38 @@ function renderProducts(containerId, products) {
   const container = document.getElementById(containerId);
   if (!container) return;
   const list = Array.isArray(products) ? products : [];
-  const placeholderImg = assetPath("./asset/images/placeholder-product.svg");
+  const fallbackImg = assetPath("./asset/img/苗.avif");
 
   if (!list.length) {
     container.innerHTML = `
-      <article class="product-card product-card--placeholder fade-up">
-        <div class="product-card__image product-card__image--placeholder" aria-hidden="true"></div>
-        <div class="product-card__body">
-          <h3 class="product-card__name">${PLACEHOLDER}</h3>
-          <p class="product-card__meta">品目・時期は確認中</p>
-          <p class="product-card__note">SNSやヒアリングで確認後、ここに掲載します。</p>
+      <article class="produce-item fade-up">
+        <figure class="produce-item__photo">
+          <img src="${escapeAttr(fallbackImg)}" alt="苗" loading="lazy" width="800" height="600" />
+        </figure>
+        <div class="produce-item__text">
+          <h3 class="produce-item__name">${PLACEHOLDER}</h3>
+          <p class="produce-item__season">品目・旬は確認中</p>
+          <p class="produce-item__note">SNSやヒアリングで確認後、ここに掲載します。</p>
         </div>
       </article>`;
     return;
   }
 
   container.innerHTML = list
-    .map((p) => {
-      const imgSrc = p.image ? assetPath(p.image.startsWith("./") ? p.image : `./${p.image}`) : placeholderImg;
+    .map((p, i) => {
+      const imgSrc = p.image
+        ? assetPath(p.image.startsWith("./") ? p.image : `./${p.image}`)
+        : fallbackImg;
+      const altClass = i % 2 === 1 ? " produce-item--alt" : "";
       return `
-      <article class="product-card fade-up">
-        <div class="product-card__image">
-          <img src="${escapeAttr(imgSrc)}" alt="${escapeAttr(p.name)}" loading="lazy" width="400" height="300" />
-        </div>
-        <div class="product-card__body">
-          <h3 class="product-card__name">${escapeHtml(p.name)}</h3>
-          <p class="product-card__meta">${escapeHtml(p.season || "時期：要確認")}</p>
-          ${p.note ? `<p class="product-card__note">${escapeHtml(p.note)}</p>` : ""}
+      <article class="produce-item${altClass} fade-up">
+        <figure class="produce-item__photo">
+          <img src="${escapeAttr(imgSrc)}" alt="${escapeAttr(p.name)}" loading="lazy" width="800" height="600" />
+        </figure>
+        <div class="produce-item__text">
+          <h3 class="produce-item__name">${escapeHtml(p.name)}</h3>
+          <p class="produce-item__season">${escapeHtml(p.season || "旬：要確認")}</p>
+          ${p.note ? `<p class="produce-item__note">${escapeHtml(p.note)}</p>` : ""}
         </div>
       </article>`;
     })
@@ -169,8 +173,8 @@ function renderFaq(containerId, faq) {
     .map(
       (item) => `
       <details class="faq__item fade-up">
-        <summary><span class="faq__q">Q</span>${escapeHtml(item.q)}<span class="faq__toggle" aria-hidden="true"></span></summary>
-        <div class="faq__answer"><span class="faq__a">A</span><p>${escapeHtml(item.a)}</p></div>
+        <summary>${escapeHtml(item.q)}<span class="faq__toggle" aria-hidden="true">+</span></summary>
+        <div class="faq__answer"><p>${escapeHtml(item.a)}</p></div>
       </details>`
     )
     .join("");
@@ -180,21 +184,15 @@ function renderPhotos(containerId, photos) {
   const container = document.getElementById(containerId);
   if (!container) return;
   const list = Array.isArray(photos) ? photos.filter((p) => p && p.src) : [];
-  if (!list.length) {
-    container.innerHTML = `
-      <div class="photo-placeholder fade-up" role="img" aria-label="農園の写真は確認後に掲載します">
-        <p>農園・農産物・作業風景の写真</p>
-        <span>素材確認後に差し替え</span>
-      </div>`;
-    return;
-  }
+  if (!list.length) return;
+
   container.innerHTML = list
     .map((p) => {
       const src = assetPath(p.src.startsWith("./") ? p.src : `./${p.src}`);
       return `
-      <figure class="photo-item fade-up">
+      <figure class="gallery-item fade-up">
         <img src="${escapeAttr(src)}" alt="${escapeAttr(p.alt)}" loading="lazy" width="600" height="400" />
-        ${p.caption ? `<figcaption>${escapeHtml(p.caption)}</figcaption>` : ""}
+        ${p.caption ? `<figcaption>${escapeHtml(p.caption)}</figcaption>` : `<figcaption>${escapeHtml(p.alt)}</figcaption>`}
       </figure>`;
     })
     .join("");
@@ -238,7 +236,7 @@ function setupMapLinks(farm) {
 
 function setupPhoneLinks(phone) {
   const tel = phone ? `tel:${phone.replace(/[^\d+]/g, "")}` : null;
-  ["phoneLink", "stickyPhone"].forEach((id) => setHref(id, tel));
+  if (tel) setHref("phoneLink", tel);
 }
 
 function setupSns(farm) {
@@ -250,12 +248,12 @@ function setupSns(farm) {
   const thNote = document.getElementById("threadsNote");
   if (igNote) {
     igNote.textContent = farm.instagramUrl
-      ? "最新の収穫・販売状況はこちら"
+      ? "最新の収穫・販売状況を見る →"
       : "URL確認後にリンクを設置します";
   }
   if (thNote) {
     thNote.textContent = farm.threadsUrl
-      ? "本日の様子・お知らせはこちら"
+      ? "農園の日常・お知らせを見る →"
       : "URL確認後にリンクを設置します";
   }
 }
@@ -319,7 +317,7 @@ function initSiteNav() {
   let ticking = false;
   const updateNav = () => {
     ticking = false;
-    const threshold = hero ? Math.min(hero.offsetHeight * 0.1, 100) : 80;
+    const threshold = hero ? Math.min(hero.offsetHeight * 0.08, 80) : 60;
     nav.classList.toggle("is-scrolled", window.scrollY > threshold);
   };
   window.addEventListener("scroll", () => {
@@ -356,7 +354,7 @@ function initStickyCta() {
     ticking = false;
     const heroBottom = hero.getBoundingClientRect().bottom;
     const footerTop = footer ? footer.getBoundingClientRect().top : Infinity;
-    sticky.classList.toggle("is-shown", heroBottom < 0 && footerTop > window.innerHeight * 0.5);
+    sticky.classList.toggle("is-shown", heroBottom < 0 && footerTop > window.innerHeight * 0.45);
   };
   window.addEventListener("scroll", () => {
     if (ticking) return;

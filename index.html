@@ -13,7 +13,7 @@
   <link rel="icon" href="./asset/images/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
   <script type="application/ld+json" id="structuredData">
   {
@@ -38,7 +38,7 @@
         <li><a class="site-nav__link" href="#access">アクセス</a></li>
         <li><a class="site-nav__link" href="#sns">SNS</a></li>
       </ul>
-      <a href="#access" class="btn btn--primary site-nav__cta">地図を見る</a>
+      <a href="#access" class="btn btn--nav site-nav__cta">地図を見る</a>
       <button type="button" class="site-nav__toggle" id="siteNavToggle" aria-expanded="false" aria-controls="siteNavMenu" aria-label="メニューを開く">
         <span class="site-nav__toggle-bar" aria-hidden="true"></span>
         <span class="site-nav__toggle-bar" aria-hidden="true"></span>
@@ -61,109 +61,131 @@
   </nav>
 
   <header class="hero">
-    <div class="hero__bg" aria-hidden="true">
-      <div class="hero__bg-image"></div>
-      <div class="hero__overlay"></div>
+    <div class="hero__photo" aria-hidden="true">
+      <img src="./asset/img/水やり.jpg" alt="" width="1200" height="1600" fetchpriority="high" />
     </div>
+    <div class="hero__sky" aria-hidden="true"></div>
     <div class="hero__inner">
-      <div class="hero__first-view">
-        <p class="hero__eyebrow fade-up" id="heroFarmName">農園名（要確認）</p>
-        <h1 class="hero__title fade-up">
-          <span class="hero__title-line" id="heroCatchCopy">農園ならではの魅力を、情報確認後に掲載します</span>
-        </h1>
-        <p class="hero__lead fade-up" id="heroSubCopy">Instagram・Threadsで発信中の情報を、このページに整理しています。</p>
-        <ul class="hero__quick fade-up" aria-label="主要情報">
-          <li><a href="#info"><span>営業時間</span><strong id="heroHours">要確認</strong></a></li>
-          <li><a href="#access"><span>アクセス</span><strong id="heroAddress">要確認</strong></a></li>
-          <li><a href="#purchase"><span>購入</span><strong>方法を見る</strong></a></li>
-        </ul>
-        <div class="hero__actions fade-up">
-          <a href="#access" class="btn btn--primary btn--large">地図・アクセスを見る</a>
-          <a href="#sns" class="btn btn--outline btn--large">最新情報（SNS）</a>
+      <div class="hero__content fade-up">
+        <p class="hero__farm" id="heroFarmName">農園名（要確認）</p>
+        <h1 class="hero__title" id="heroCatchCopy">農園ならではの魅力を、情報確認後に掲載します</h1>
+        <p class="hero__lead" id="heroSubCopy">Instagram・Threadsで発信中の情報を、このページに整理しています。</p>
+        <dl class="hero__meta" aria-label="基本情報">
+          <div>
+            <dt>営業時間</dt>
+            <dd id="heroHours">要確認</dd>
+          </div>
+          <div>
+            <dt>場所</dt>
+            <dd id="heroAddress">要確認</dd>
+          </div>
+        </dl>
+        <div class="hero__actions">
+          <a href="#access" class="btn btn--field">地図を見る</a>
+          <a href="#sns" class="btn btn--ghost">SNSで最新情報</a>
         </div>
       </div>
+      <figure class="hero__inset fade-up">
+        <img src="./asset/img/土.jpg" alt="土を手に持つ様子" width="800" height="1200" loading="eager" />
+        <figcaption>土の手触りから、一日が始まる</figcaption>
+      </figure>
+    </div>
+    <div class="hero__wind" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,45 L1440,80 L0,80 Z" fill="#FCFCF8"/>
+      </svg>
     </div>
   </header>
 
   <main id="main">
 
-    <section class="section section--warm" id="about">
-      <div class="container">
-        <p class="section__eyebrow fade-up">ABOUT</p>
-        <h2 class="section__title fade-up">農園・農家について</h2>
-        <div class="about-grid">
-          <div class="about-grid__text fade-up">
-            <p class="section__lead" id="aboutText">農園の紹介文は、事業者ヒアリング後に掲載します。</p>
-            <div class="photo-gallery photo-gallery--single" id="photoGallery"></div>
-          </div>
+    <section class="story" id="about">
+      <div class="wrap story__grid">
+        <figure class="story__photo story__photo--offset fade-up">
+          <img src="./asset/img/苗.avif" alt="苗" width="600" height="800" loading="lazy" />
+        </figure>
+        <div class="story__text fade-up">
+          <p class="label">農園について</p>
+          <h2 class="heading">農園について</h2>
+          <p class="body-text" id="aboutText">農園の紹介文は、事業者ヒアリング後に掲載します。</p>
+          <a href="#commitment" class="text-link">こだわりを見る →</a>
         </div>
       </div>
+      <div class="story__gallery wrap" id="photoGallery" aria-label="農園の写真"></div>
     </section>
 
-    <section class="section section--cream" id="commitment">
-      <div class="container">
-        <p class="section__eyebrow fade-up">COMMITMENT</p>
-        <h2 class="section__title fade-up">農業・農産物へのこだわり</h2>
-        <p class="section__note fade-up">※ SNS等で確認できた内容のみ掲載します。未確認の項目は断定しません。</p>
-        <ul class="commitment-list fade-up" id="commitmentList">
-          <li class="placeholder-item">こだわりの内容は確認中です。</li>
-        </ul>
-      </div>
-    </section>
+    <div class="wind-divider wind-divider--leaf" aria-hidden="true"></div>
 
-    <section class="section section--white" id="products">
-      <div class="container">
-        <p class="section__eyebrow fade-up">PRODUCTS</p>
-        <h2 class="section__title fade-up">商品・農産物</h2>
-        <div class="product-grid" id="productGrid"></div>
-      </div>
-    </section>
-
-    <section class="section section--warm" id="purchase">
-      <div class="container container--narrow">
-        <p class="section__eyebrow fade-up">PURCHASE</p>
-        <h2 class="section__title fade-up">購入方法</h2>
-        <div class="info-card fade-up">
-          <ul class="info-card__list" id="purchaseList">
-            <li class="placeholder-item">購入方法は確認中です。</li>
+    <section class="field-note" id="commitment">
+      <div class="wrap field-note__grid">
+        <div class="field-note__visual fade-up">
+          <img src="./asset/img/水やり.jpg" alt="水やりの様子" width="800" height="1067" loading="lazy" />
+        </div>
+        <div class="field-note__body fade-up">
+          <p class="label">日々のこと</p>
+          <h2 class="heading">畑で大切にしていること</h2>
+          <p class="body-text body-text--muted">SNSやヒアリングで確認できた内容だけを掲載します。</p>
+          <ul class="wind-list" id="commitmentList">
+            <li class="placeholder-item">こだわりの内容は確認中です。</li>
           </ul>
         </div>
-        <div class="cta-inline fade-up">
-          <a href="#sns" class="btn btn--primary">本日の販売状況をSNSで確認</a>
-        </div>
       </div>
     </section>
 
-    <section class="section section--cream" id="info">
-      <div class="container">
-        <p class="section__eyebrow fade-up">INFO</p>
-        <h2 class="section__title fade-up">営業時間・店舗情報</h2>
-        <dl class="info-table fade-up">
-          <div class="info-table__row">
+    <section class="produce" id="products">
+      <div class="wrap">
+        <header class="produce__head fade-up">
+          <p class="label">農産物</p>
+          <h2 class="heading">育てているもの</h2>
+        </header>
+        <div class="produce__list" id="productGrid"></div>
+      </div>
+    </section>
+
+    <section class="visit" id="purchase">
+      <div class="wrap visit__inner fade-up">
+        <p class="label">購入方法</p>
+        <h2 class="heading">どうやって買える？</h2>
+        <ul class="visit__steps" id="purchaseList">
+          <li class="placeholder-item">購入方法は確認中です。</li>
+        </ul>
+        <p class="visit__note">本日の販売状況は、<a href="#sns">Instagram・Threads</a>でもご確認ください。</p>
+      </div>
+    </section>
+
+    <section class="hours" id="info">
+      <div class="wrap hours__layout">
+        <div class="hours__intro fade-up">
+          <p class="label">営業情報</p>
+          <h2 class="heading">来店の前に</h2>
+          <p class="body-text body-text--muted">住所・時間・お支払い方法を、ひと目で確認できます。</p>
+        </div>
+        <dl class="hours__table fade-up">
+          <div class="hours__row">
             <dt>所在地</dt>
             <dd id="infoAddress">要確認</dd>
           </div>
-          <div class="info-table__row">
+          <div class="hours__row">
             <dt>営業時間</dt>
             <dd id="infoHours">要確認</dd>
           </div>
-          <div class="info-table__row">
+          <div class="hours__row">
             <dt>定休日</dt>
             <dd id="infoClosed">要確認</dd>
           </div>
-          <div class="info-table__row">
-            <dt>電話番号</dt>
-            <dd><a id="phoneLink" class="info-link is-disabled" role="link" aria-disabled="true">要確認</a></dd>
+          <div class="hours__row">
+            <dt>電話</dt>
+            <dd><a id="phoneLink" class="text-link is-disabled" role="link" aria-disabled="true">要確認</a></dd>
           </div>
-          <div class="info-table__row">
-            <dt>支払い方法</dt>
+          <div class="hours__row">
+            <dt>お支払い</dt>
             <dd><ul class="inline-list" id="infoPayment"><li>要確認</li></ul></dd>
           </div>
-          <div class="info-table__row">
+          <div class="hours__row">
             <dt>駐車場</dt>
             <dd id="infoParking">要確認</dd>
           </div>
-          <div class="info-table__row">
+          <div class="hours__row">
             <dt>問い合わせ</dt>
             <dd id="infoContact">要確認</dd>
           </div>
@@ -171,94 +193,87 @@
       </div>
     </section>
 
-    <section class="section section--white" id="access">
-      <div class="container">
-        <p class="section__eyebrow fade-up">ACCESS</p>
-        <h2 class="section__title fade-up">アクセス・地図</h2>
-        <p class="section__lead fade-up">スマホから迷わずたどり着けるよう、地図アプリへの導線を設置しています。</p>
-        <div class="map-card fade-up">
-          <div class="map-card__placeholder" role="img" aria-label="地図は住所確認後に表示します">
-            <p>Google Maps</p>
-            <span>住所確認後に地図を連携</span>
+    <section class="map-section" id="access">
+      <div class="wrap map-section__grid">
+        <figure class="map-section__photo fade-up">
+          <img src="./asset/img/土.jpg" alt="畑の土" width="800" height="1200" loading="lazy" />
+        </figure>
+        <div class="map-section__body fade-up">
+          <p class="label">アクセス</p>
+          <h2 class="heading">アクセス・地図</h2>
+          <p class="body-text body-text--muted">スマホから地図アプリを開いて、迷わずお越しください。</p>
+          <div class="map-section__map" role="img" aria-label="地図は住所確認後に連携します">
+            <span>Google Maps</span>
+            <small>住所が入ると、ここから地図を開けます</small>
           </div>
-          <div class="map-card__actions">
-            <a id="mapLinkPrimary" class="btn btn--primary is-disabled" role="link" aria-disabled="true" target="_blank" rel="noopener noreferrer">Google Mapsで見る</a>
-            <a id="mapLinkRoute" class="btn btn--outline is-disabled" role="link" aria-disabled="true" target="_blank" rel="noopener noreferrer">ルート検索</a>
+          <div class="map-section__actions">
+            <a id="mapLinkPrimary" class="btn btn--field is-disabled" role="link" aria-disabled="true" target="_blank" rel="noopener noreferrer">Google Mapsで見る</a>
+            <a id="mapLinkRoute" class="btn btn--ghost-dark is-disabled" role="link" aria-disabled="true" target="_blank" rel="noopener noreferrer">ルート検索</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section section--warm" id="sns">
-      <div class="container container--narrow">
-        <p class="section__eyebrow fade-up">SNS</p>
-        <h2 class="section__title fade-up">最新情報はSNSで</h2>
-        <p class="section__lead fade-up">収穫状況・販売状況・イベント情報など、日々更新される内容はSNSでご確認ください。</p>
-        <div class="sns-grid">
-          <a id="instagramLink" class="sns-card sns-card--instagram fade-up is-disabled" role="link" aria-disabled="true" target="_blank" rel="noopener noreferrer">
-            <span class="sns-card__icon" aria-hidden="true">IG</span>
-            <span class="sns-card__label">Instagram</span>
-            <span class="sns-card__cta" id="instagramNote">URL確認後にリンクを設置します</span>
+    <section class="daily" id="sns">
+      <div class="wrap">
+        <header class="daily__head fade-up">
+          <p class="label">SNS</p>
+          <h2 class="heading">畑のいまを、<br class="sp-only" />その場で</h2>
+          <p class="body-text body-text--muted">収穫や販売のタイミングは日々変わります。最新の様子はSNSで発信予定です。</p>
+        </header>
+        <div class="daily__links">
+          <a id="instagramLink" class="daily__link daily__link--ig fade-up is-disabled" role="link" aria-disabled="true" target="_blank" rel="noopener noreferrer">
+            <span class="daily__platform">Instagram</span>
+            <span class="daily__reason">今日の収穫・販売状況</span>
+            <span class="daily__cta" id="instagramNote">URL確認後にリンクを設置します</span>
           </a>
-          <a id="threadsLink" class="sns-card sns-card--threads fade-up is-disabled" role="link" aria-disabled="true" target="_blank" rel="noopener noreferrer">
-            <span class="sns-card__icon" aria-hidden="true">TH</span>
-            <span class="sns-card__label">Threads</span>
-            <span class="sns-card__cta" id="threadsNote">URL確認後にリンクを設置します</span>
+          <a id="threadsLink" class="daily__link daily__link--th fade-up is-disabled" role="link" aria-disabled="true" target="_blank" rel="noopener noreferrer">
+            <span class="daily__platform">Threads</span>
+            <span class="daily__reason">農園の日常・お知らせ</span>
+            <span class="daily__cta" id="threadsNote">URL確認後にリンクを設置します</span>
           </a>
         </div>
       </div>
     </section>
 
-    <section class="section section--cream" id="faq">
-      <div class="container container--narrow">
-        <p class="section__eyebrow fade-up">FAQ</p>
-        <h2 class="section__title fade-up">よくあるご質問</h2>
-        <div class="faq" id="faqList"></div>
+    <section class="questions" id="faq">
+      <div class="wrap wrap--narrow">
+        <p class="label fade-up">よくある質問</p>
+        <h2 class="heading fade-up">はじめての方へ</h2>
+        <div class="questions__list" id="faqList"></div>
       </div>
     </section>
 
-    <section class="section section--cta" id="cta">
-      <div class="container container--narrow">
-        <h2 class="cta__title fade-up">来店・購入・問い合わせ</h2>
-        <p class="cta__lead fade-up">必要な情報を確認したうえで、お気軽にお越し・お問い合わせください。</p>
-        <div class="cta__buttons fade-up">
-          <a href="#access" class="btn btn--light btn--large">地図を見る</a>
-          <a href="#purchase" class="btn btn--light btn--large">購入方法を見る</a>
-          <a href="#contact" class="btn btn--outline-light btn--large">お問い合わせ</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--white" id="contact">
-      <div class="container container--narrow">
-        <p class="section__eyebrow fade-up">CONTACT</p>
-        <h2 class="section__title fade-up">お問い合わせ</h2>
-        <p class="section__lead fade-up">商品の取り置き・大量注文・来店前の確認など、お気軽にどうぞ。</p>
-        <form class="contact-form fade-up" id="contactForm" novalidate>
+    <section class="reach" id="contact">
+      <div class="wrap wrap--narrow reach__inner fade-up">
+        <p class="label">お問い合わせ</p>
+        <h2 class="heading">気になることがあれば</h2>
+        <p class="body-text body-text--muted">取り置き・大量注文・来店前の確認など、お気軽にどうぞ。</p>
+        <form class="reach__form" id="contactForm" novalidate>
           <div class="form-row">
             <label class="form-label" for="c-name">お名前<span class="req">必須</span></label>
             <input class="form-input" type="text" id="c-name" name="name" required placeholder="例）山田 太郎" />
           </div>
           <div class="form-row">
-            <label class="form-label" for="c-email">メールアドレス<span class="req">必須</span></label>
+            <label class="form-label" for="c-email">メール<span class="req">必須</span></label>
             <input class="form-input" type="email" id="c-email" name="email" required placeholder="例）example@mail.com" />
           </div>
           <div class="form-row">
-            <label class="form-label" for="c-message">お問い合わせ内容<span class="req">必須</span></label>
+            <label class="form-label" for="c-message">内容<span class="req">必須</span></label>
             <textarea class="form-input form-textarea" id="c-message" name="message" rows="5" required placeholder="ご質問・ご要望をご記入ください"></textarea>
           </div>
-          <button type="submit" class="btn btn--primary btn--large form-submit">送信する</button>
+          <button type="submit" class="btn btn--field form-submit">送信する</button>
           <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
         </form>
       </div>
     </section>
 
-    <section class="section section--audit" id="audit" aria-label="制作時の確認事項">
-      <div class="container container--narrow">
-        <p class="section__eyebrow fade-up">FOR STAFF</p>
-        <h2 class="section__title fade-up">掲載前に確認が必要な情報</h2>
-        <p class="section__note fade-up">営業・制作時のチェックリストです。公開前に <code>farm-data.js</code> を更新してください。</p>
-        <ul class="audit-list fade-up" id="missingList"></ul>
+    <section class="staff-note" id="audit" aria-label="制作時の確認事項">
+      <div class="wrap wrap--narrow">
+        <p class="label">制作メモ</p>
+        <h2 class="heading heading--sm">掲載前に確認が必要な情報</h2>
+        <p class="body-text body-text--muted">公開前に <code>farm-data.js</code> を更新してください。</p>
+        <ul class="staff-note__list" id="missingList"></ul>
       </div>
     </section>
 
@@ -271,9 +286,8 @@
 
   <div class="sticky-cta" id="stickyCta" aria-label="クイック操作">
     <a id="stickyMap" class="sticky-cta__btn is-disabled" role="link" aria-disabled="true">地図</a>
-    <a href="#purchase" class="sticky-cta__btn sticky-cta__btn--accent">購入方法</a>
+    <a href="#purchase" class="sticky-cta__btn">購入方法</a>
     <a id="stickyInstagram" class="sticky-cta__btn is-disabled" role="link" aria-disabled="true">Instagram</a>
-    <a id="stickyPhone" class="sticky-cta__btn is-disabled" role="link" aria-disabled="true">電話</a>
   </div>
 
   <script src="./farm-data.js"></script>
