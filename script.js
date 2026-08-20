@@ -62,8 +62,11 @@ function renderFarmData() {
 
   setText("navBrand", displayName);
   setText("footerBrand", displayName);
-  setText("heroTitle", displayName);
-
+  setText("heroFarmName", displayName);
+  setText(
+    "heroCatchCopy",
+    farm.catchCopy || "農園の情報を、少しずつこのページに集めています"
+  );
   setText(
     "heroSubCopy",
     farm.subCopy || "Instagram・Threadsで発信予定の情報を、見やすく整理しています。"
