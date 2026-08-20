@@ -2,8 +2,6 @@
  * 農園情報データ
  * GitHub Pages 公開時はこのファイルだけ更新すれば LP 全体に反映されます。
  * 確認できない項目は null のまま → LP 上では「要確認」と表示されます。
- *
- * FARM_INFO_AUDIT … 制作者向けチェックリスト（公開LPには表示しません）
  */
 
 window.FARM_INFO_AUDIT = {
@@ -35,7 +33,7 @@ window.FARM_INFO_AUDIT = {
 };
 
 window.FARM = {
-  name: "●●農園",
+  name: null,
   region: null,
   mainProducts: null,
   catchCopy: null,

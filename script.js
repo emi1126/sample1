@@ -1,10 +1,15 @@
-// 農家LP — GitHub Pages 対応
+// 農家LP — GitHub Pages 対応（静的サイト・相対パス）
 
 const PLACEHOLDER = "要確認";
-const DEFAULT_FARM_NAME = "●●農園";
 const REVEAL_SELECTOR = ".fade-up";
-const REVEAL_THRESHOLD = 0.1;
-const REVEAL_ROOT_MARGIN = "0px 0px -40px 0px";
+const REVEAL_THRESHOLD = 0.12;
+const REVEAL_ROOT_MARGIN = "0px 0px -32px 0px";
+
+const DEFAULT_HERO = {
+  main: "./asset/img/水やり.jpg",
+  subA: "./asset/img/土.jpg",
+  subB: "./asset/img/苗.avif",
+};
 
 function assetPath(relativePath) {
   return new URL(relativePath.replace(/^\.\//, ""), document.baseURI).href;
@@ -37,10 +42,28 @@ function setHref(id, url) {
   }
 }
 
+function setImg(id, src, alt) {
+  const el = document.getElementById(id);
+  if (!el || !src) return;
+  el.src = assetPath(src.startsWith("./") ? src : `./${src}`);
+  if (alt) el.alt = alt;
+}
+
+function initHeroPhotos(photos) {
+  const list = Array.isArray(photos) ? photos.filter((p) => p && p.src) : [];
+  const main = list[1] || list[0];
+  const subA = list[0] || list[1];
+  const subB = list[2] || list[0];
+
+  setImg("heroMainImg", main?.src || DEFAULT_HERO.main, main?.alt || "水やりの様子");
+  setImg("heroSubImgA", subA?.src || DEFAULT_HERO.subA, subA?.alt || "土");
+  setImg("heroSubImgB", subB?.src || DEFAULT_HERO.subB, subB?.alt || "苗");
+}
+
 function renderFarmData() {
   const farm = window.FARM || {};
 
-  const displayName = textOrPlaceholder(farm.name, DEFAULT_FARM_NAME);
+  const displayName = textOrPlaceholder(farm.name, "農園名（要確認）");
   const region = farm.region ? `${farm.region}の` : "";
   const products = farm.mainProducts || "農産物";
 
@@ -63,19 +86,21 @@ function renderFarmData() {
   setText("navBrand", displayName);
   setText("footerBrand", displayName);
   setText("heroFarmName", displayName);
+
   setText(
     "heroCatchCopy",
-    farm.catchCopy || "農園の情報を、少しずつこのページに集めています"
+    farm.catchCopy || "農園ならではの魅力を、情報確認後に掲載します"
   );
   setText(
     "heroSubCopy",
-    farm.subCopy || "Instagram・Threadsで発信予定の情報を、見やすく整理しています。"
+    farm.subCopy || "Instagram・Threadsで発信中の情報を、このページに整理しています。"
   );
   setText("aboutText", farm.about || "農園の紹介文は、事業者ヒアリング後に掲載します。");
 
+  initHeroPhotos(farm.photos);
   renderList("commitmentList", farm.commitments, "こだわりの内容は確認中です。");
   renderProducts("productGrid", farm.products);
-  renderList("purchaseList", farm.purchaseMethods, "購入方法は確認中です。");
+  renderPurchaseList("purchaseList", farm.purchaseMethods, "購入方法は確認中です。");
 
   setText("infoAddress", farm.address);
   setText("heroAddress", farm.address ? farm.address.split(/[、,\s]/)[0] : null);
@@ -95,6 +120,7 @@ function renderFarmData() {
   setupSns(farm);
   renderFaq("faqList", farm.faq);
   renderPhotos("photoGallery", farm.photos);
+  renderMissingNotice();
   updateStructuredData(farm, displayName, description);
 }
 
@@ -115,22 +141,30 @@ function renderList(containerId, items, emptyMessage) {
   container.innerHTML = list.map((item) => `<li>${escapeHtml(item)}</li>`).join("");
 }
 
+function renderPurchaseList(containerId, items, emptyMessage) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  const list = Array.isArray(items) ? items.filter(Boolean) : [];
+  if (!list.length) {
+    container.innerHTML = `<li class="placeholder-item">${escapeHtml(emptyMessage)}</li>`;
+    return;
+  }
+  container.innerHTML = list.map((item) => `<li>${escapeHtml(item)}</li>`).join("");
+}
+
 function renderProducts(containerId, products) {
   const container = document.getElementById(containerId);
   if (!container) return;
   const list = Array.isArray(products) ? products : [];
-  const fallbackImg = assetPath("./asset/img/苗.avif");
 
   if (!list.length) {
     container.innerHTML = `
-      <article class="produce-item fade-up">
-        <figure class="produce-item__photo">
-          <img src="${escapeAttr(fallbackImg)}" alt="苗" loading="lazy" width="800" height="600" />
-        </figure>
-        <div class="produce-item__text">
-          <h3 class="produce-item__name">${PLACEHOLDER}</h3>
-          <p class="produce-item__season">品目・旬は確認中</p>
-          <p class="produce-item__note">SNSやヒアリングで確認後、ここに掲載します。</p>
+      <article class="product-item fade-up">
+        <div class="product-item__photo product-item__photo--empty" aria-hidden="true"></div>
+        <div class="product-item__body">
+          <h3 class="product-item__name">${PLACEHOLDER}</h3>
+          <p class="product-item__season">旬・品目は確認中</p>
+          <p class="product-item__note">SNSやヒアリングで確認後、ここに掲載します。</p>
         </div>
       </article>`;
     return;
@@ -138,19 +172,18 @@ function renderProducts(containerId, products) {
 
   container.innerHTML = list
     .map((p, i) => {
-      const imgSrc = p.image
-        ? assetPath(p.image.startsWith("./") ? p.image : `./${p.image}`)
-        : fallbackImg;
-      const altClass = i % 2 === 1 ? " produce-item--alt" : "";
+      const hasImage = Boolean(p.image);
+      const imgSrc = hasImage ? assetPath(p.image.startsWith("./") ? p.image : `./${p.image}`) : "";
+      const photoHtml = hasImage
+        ? `<div class="product-item__photo"><img src="${escapeAttr(imgSrc)}" alt="${escapeAttr(p.name)}" loading="lazy" width="800" height="600" /></div>`
+        : `<div class="product-item__photo product-item__photo--empty" aria-hidden="true"></div>`;
       return `
-      <article class="produce-item${altClass} fade-up">
-        <figure class="produce-item__photo">
-          <img src="${escapeAttr(imgSrc)}" alt="${escapeAttr(p.name)}" loading="lazy" width="800" height="600" />
-        </figure>
-        <div class="produce-item__text">
-          <h3 class="produce-item__name">${escapeHtml(p.name)}</h3>
-          <p class="produce-item__season">${escapeHtml(p.season || "旬：要確認")}</p>
-          ${p.note ? `<p class="produce-item__note">${escapeHtml(p.note)}</p>` : ""}
+      <article class="product-item fade-up">
+        ${photoHtml}
+        <div class="product-item__body">
+          <h3 class="product-item__name">${escapeHtml(p.name)}</h3>
+          <p class="product-item__season">${escapeHtml(p.season || "旬：要確認")}</p>
+          ${p.note ? `<p class="product-item__note">${escapeHtml(p.note)}</p>` : ""}
         </div>
       </article>`;
     })
@@ -172,7 +205,7 @@ function renderFaq(containerId, faq) {
     .map(
       (item) => `
       <details class="faq__item fade-up">
-        <summary>${escapeHtml(item.q)}<span class="faq__toggle" aria-hidden="true">+</span></summary>
+        <summary><span class="faq__q">Q</span>${escapeHtml(item.q)}<span class="faq__toggle" aria-hidden="true"></span></summary>
         <div class="faq__answer"><p>${escapeHtml(item.a)}</p></div>
       </details>`
     )
@@ -183,18 +216,31 @@ function renderPhotos(containerId, photos) {
   const container = document.getElementById(containerId);
   if (!container) return;
   const list = Array.isArray(photos) ? photos.filter((p) => p && p.src) : [];
-  if (!list.length) return;
 
+  if (!list.length) {
+    container.innerHTML = `<div class="photo-placeholder fade-up">農園の写真は確認後に掲載します</div>`;
+    return;
+  }
+
+  const layouts = ["photo-mosaic__item--large", "photo-mosaic__item--offset", ""];
   container.innerHTML = list
-    .map((p) => {
+    .map((p, i) => {
       const src = assetPath(p.src.startsWith("./") ? p.src : `./${p.src}`);
+      const layoutClass = layouts[i % layouts.length];
       return `
-      <figure class="gallery-item fade-up">
-        <img src="${escapeAttr(src)}" alt="${escapeAttr(p.alt)}" loading="lazy" width="600" height="400" />
-        ${p.caption ? `<figcaption>${escapeHtml(p.caption)}</figcaption>` : `<figcaption>${escapeHtml(p.alt)}</figcaption>`}
+      <figure class="photo-mosaic__item ${layoutClass} fade-up">
+        <img src="${escapeAttr(src)}" alt="${escapeAttr(p.alt)}" loading="lazy" width="600" height="450" />
+        ${p.caption ? `<figcaption>${escapeHtml(p.caption)}</figcaption>` : ""}
       </figure>`;
     })
     .join("");
+}
+
+function renderMissingNotice() {
+  const audit = window.FARM_INFO_AUDIT;
+  const container = document.getElementById("missingList");
+  if (!container || !audit?.missing?.length) return;
+  container.innerHTML = audit.missing.map((item) => `<li>${escapeHtml(item)}</li>`).join("");
 }
 
 function updateStructuredData(farm, name, description) {
@@ -228,7 +274,7 @@ function setupMapLinks(farm) {
 
 function setupPhoneLinks(phone) {
   const tel = phone ? `tel:${phone.replace(/[^\d+]/g, "")}` : null;
-  if (tel) setHref("phoneLink", tel);
+  setHref("phoneLink", tel);
 }
 
 function setupSns(farm) {
@@ -240,13 +286,13 @@ function setupSns(farm) {
   const thNote = document.getElementById("threadsNote");
   if (igNote) {
     igNote.textContent = farm.instagramUrl
-      ? "最新の収穫・販売状況を見る →"
-      : "URL確認後にリンクを設置します";
+      ? "今日の収穫・販売中の野菜"
+      : "今日の収穫・販売中の野菜（URL確認後にリンク）";
   }
   if (thNote) {
     thNote.textContent = farm.threadsUrl
-      ? "農園の日常・お知らせを見る →"
-      : "URL確認後にリンクを設置します";
+      ? "農園の日常・お知らせ"
+      : "農園の日常・お知らせ（URL確認後にリンク）";
   }
 }
 
