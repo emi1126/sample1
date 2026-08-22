@@ -6,7 +6,7 @@ const REVEAL_THRESHOLD = 0.12;
 const REVEAL_ROOT_MARGIN = "0px 0px -32px 0px";
 
 const DEFAULT_HERO = {
-  main: "./asset/img/水やり.jpg",
+  main: "./asset/img/hero-shine-muscat.jpg",
 };
 
 function assetPath(relativePath) {
@@ -47,12 +47,15 @@ function setImg(id, src, alt) {
   if (alt) el.alt = alt;
 }
 
-function initHeroPhotos(photos) {
+function initHeroPhotos(photos, farm) {
+  if (farm?.heroPhoto?.src) {
+    setImg("heroMainImg", farm.heroPhoto.src, farm.heroPhoto.alt || farm.name || "篠田ぶどう園");
+    return;
+  }
   const list = Array.isArray(photos) ? photos.filter((p) => p && p.src) : [];
-  const main =
-    list.find((p) => p.src.includes("水やり")) || list[1] || list[0];
+  const main = list.find((p) => p.hero) || list[0];
 
-  setImg("heroMainImg", main?.src || DEFAULT_HERO.main, main?.alt || "水やりの様子");
+  setImg("heroMainImg", main?.src || DEFAULT_HERO.main, main?.alt || "ぶどう農園");
 }
 
 function renderFarmData() {
@@ -84,7 +87,7 @@ function renderFarmData() {
 
   setText("aboutText", farm.about || "農園の紹介文は、事業者ヒアリング後に掲載します。");
 
-  initHeroPhotos(farm.photos);
+  initHeroPhotos(farm.photos, farm);
   renderList("commitmentList", farm.commitments, "こだわりの内容は確認中です。");
   renderProducts("productGrid", farm.products);
   renderPurchaseList("purchaseList", farm.purchaseMethods, "購入方法は確認中です。");
@@ -100,7 +103,7 @@ function renderFarmData() {
 
   renderList("infoPayment", farm.paymentMethods, PLACEHOLDER);
   setText("infoParking", formatParking(farm.parking));
-  setText("infoContact", farm.contactMethod);
+  setContactInfo(farm);
 
   setupMapLinks(farm);
   setupPhoneLinks(farm.phone);
@@ -113,7 +116,23 @@ function renderFarmData() {
 function formatParking(value) {
   if (value === true) return "あり";
   if (value === false) return "なし";
+  if (typeof value === "string" && value.trim()) return value.trim();
   return PLACEHOLDER;
+}
+
+function setContactInfo(farm) {
+  const el = document.getElementById("infoContact");
+  if (!el) return;
+
+  const url = farm.instagramUrl;
+  const handle = farm.instagramHandle || "@toyota_budou";
+
+  if (url) {
+    el.innerHTML = `Instagram DM <a href="${escapeAttr(url)}" class="text-link" target="_blank" rel="noopener noreferrer">${escapeHtml(handle)}</a>`;
+    return;
+  }
+
+  setText("infoContact", farm.contactMethod);
 }
 
 function renderList(containerId, items, emptyMessage) {
