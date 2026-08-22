@@ -6,7 +6,7 @@ const REVEAL_THRESHOLD = 0.12;
 const REVEAL_ROOT_MARGIN = "0px 0px -32px 0px";
 
 const DEFAULT_HERO = {
-  main: "./asset/img/hero-shine-muscat.jpg",
+  main: "./asset/img/hero-vineyard-morning.jpg",
 };
 
 function assetPath(relativePath) {
@@ -49,13 +49,18 @@ function setImg(id, src, alt) {
 
 function initHeroPhotos(photos, farm) {
   if (farm?.heroPhoto?.src) {
-    setImg("heroMainImg", farm.heroPhoto.src, farm.heroPhoto.alt || farm.name || "篠田ぶどう園");
+    setImg(
+      "heroMainImg",
+      farm.heroPhoto.src,
+      farm.heroPhoto.alt || farm.name || "篠田ぶどう園"
+    );
     return;
   }
+
   const list = Array.isArray(photos) ? photos.filter((p) => p && p.src) : [];
   const main = list.find((p) => p.hero) || list[0];
 
-  setImg("heroMainImg", main?.src || DEFAULT_HERO.main, main?.alt || "ぶどう農園");
+  setImg("heroMainImg", main?.src || DEFAULT_HERO.main, main?.alt || "ぶどう畑");
 }
 
 function renderFarmData() {
@@ -128,11 +133,11 @@ function setContactInfo(farm) {
   const handle = farm.instagramHandle || "@toyota_budou";
 
   if (url) {
-    el.innerHTML = `Instagram<br><a href="${escapeAttr(url)}" class="visit-details__link" target="_blank" rel="noopener noreferrer">${escapeHtml(handle)}</a>`;
+    el.innerHTML = `Instagram（<a href="${escapeAttr(url)}" class="visit-details__link" target="_blank" rel="noopener noreferrer">${escapeHtml(handle)}</a>）`;
     return;
   }
 
-  setText("infoContact", farm.contactMethod);
+  setText("infoContact", farm.contactMethod || `Instagram（${handle}）`);
 }
 
 function renderList(containerId, items, emptyMessage) {

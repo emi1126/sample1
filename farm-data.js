@@ -1,7 +1,6 @@
 /**
  * 農園情報データ — 篠田ぶどう園（@toyota_budou）
  * GitHub Pages 公開時はこのファイルだけ更新すれば LP 全体に反映されます。
- * 確認できない項目は null のまま → LP 上では「要確認」と表示されます。
  */
 
 window.FARM_INFO_AUDIT = {
@@ -41,24 +40,24 @@ window.FARM = {
       name: "シャインマスカット",
       season: "主力品種",
       image: "./asset/img/shine-muscat.jpg",
-      note: "Instagram投稿より。マスカット香のある緑色から黄色っぽくなると甘みが強くなり、完熟に近づきます。あいちのぶどうコンテストで愛知県農業会議会長賞を受賞。",
+      note: "Instagramプロフィールより。販売状況はInstagram・Threadsでご確認ください。",
     },
     {
       name: "巨峰",
       season: "直売開始時より販売",
       image: "./asset/img/kyoho.jpg",
-      note: "Instagram投稿（2026年8月）より、直売開始時にシャインマスカットと並んで販売。最新の在庫はInstagram・Threadsでご確認ください。",
+      note: "Threads（2026年）より。最新の在庫はInstagram・Threadsでご確認ください。",
     },
     {
       name: "ピオーネ",
-      season: "Instagramプロフィールに記載",
+      season: "8月末頃から収穫開始予定",
       image: "./asset/img/pione.jpg",
-      note: "Instagramプロフィールで栽培品種として掲載。収穫・販売時期の詳細はInstagram・Threadsでご確認ください。",
+      note: "Threads（2026年）の投稿より。",
     },
     {
       name: "富士の輝",
-      season: "Instagram投稿より販売",
-      note: "Instagram投稿より。シャインマスカットとウインクの掛け合わせ品種で、種無しで皮ごと食べられるぶどうです。",
+      season: "8月末頃から収穫開始予定",
+      note: "Threads（2026年）の投稿より。品種別の写真は準備中です。",
     },
   ],
   purchaseMethods: [
@@ -74,7 +73,7 @@ window.FARM = {
   phone: null,
   paymentMethods: ["現金のみ"],
   parking: "2〜3台程度（空いているスペースを利用）",
-  contactMethod: "Instagram DM",
+  contactMethod: "Instagram（@toyota_budou）",
   instagramHandle: "@toyota_budou",
   contactEmail: null,
   instagramUrl: "https://www.instagram.com/toyota_budou/",
@@ -82,8 +81,8 @@ window.FARM = {
   instagramNote: "ぶどうの収穫・直売情報",
   threadsNote: "農園の日常・直売のお知らせ",
   heroPhoto: {
-    src: "./asset/img/hero-shine-muscat.jpg",
-    alt: "篠田ぶどう園のシャインマスカット",
+    src: "./asset/img/hero-vineyard-morning.jpg",
+    alt: "朝日が差し込むぶどう畑",
   },
   faq: [
     {
@@ -112,8 +111,8 @@ window.FARM = {
     },
   ],
   photos: [
-    { src: "./asset/img/shop.jpg", alt: "篠田ぶどう園 直売所" },
-    { src: "./asset/img/farm-vinyl.jpg", alt: "雨除けビニールを張ったぶどう畑" },
-    { src: "./asset/img/farm-field.jpg", alt: "篠田ぶどう園の畑" },
+    { src: "./asset/img/shop.jpg", alt: "直売用の巨峰ぶどう" },
+    { src: "./asset/img/farm-field.jpg", alt: "袋掛け栽培のぶどう畑" },
+    { src: "./asset/img/farm-vinyl.jpg", alt: "ぶどうの木に実る若い巨峰" },
   ],
 };

@@ -86,6 +86,11 @@ code { font-size: 0.86em; background: rgba(63, 102, 80, 0.08); padding: 2px 6px;
 .site-nav__drawer-link {
   display: block; padding: 16px 24px; font-size: 0.95rem; font-weight: 500;
   border-bottom: 1px solid var(--line); color: #1a3328;
+  transition: color 0.2s ease;
+}
+.site-nav__drawer-link:hover,
+.site-nav__drawer-link:focus {
+  color: var(--green-deep);
 }
 body.site-nav-open { overflow: hidden; }
 
@@ -117,6 +122,7 @@ body.site-nav-open { overflow: hidden; }
   background: var(--sky); color: var(--green-deep);
   border: 1px solid var(--line);
 }
+.btn--soft:hover { opacity: 0.88; }
 .btn--text {
   background: none; color: var(--green-deep);
   text-decoration: underline; text-underline-offset: 4px;
@@ -420,7 +426,16 @@ body.site-nav-open { overflow: hidden; }
   color: var(--green-deep);
 }
 .purchase-hint { font-size: 0.92rem; color: var(--ink-muted); }
-.purchase-hint a { color: var(--green-deep); text-decoration: underline; text-underline-offset: 3px; }
+.purchase-hint a {
+  color: var(--green-deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+.purchase-hint a:hover,
+.purchase-hint a:focus {
+  color: var(--green-deep);
+}
 
 /* ── Visit info ── */
 .visit-layout { display: grid; gap: 32px; }
@@ -437,12 +452,20 @@ body.site-nav-open { overflow: hidden; }
 .visit-details dd { font-size: 0.98rem; line-height: 1.75; word-break: break-word; }
 .visit-details__link {
   color: inherit;
-  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
 }
 .visit-details__link:hover,
 .visit-details__link:focus {
-  color: inherit;
-  text-decoration: none;
+  color: var(--green-deep);
+}
+.text-link:not(.is-disabled) {
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.text-link:not(.is-disabled):hover,
+.text-link:not(.is-disabled):focus {
+  color: var(--green-deep);
 }
 .text-link.is-disabled { color: var(--ink-muted); }
 .inline-list li { display: inline; }
@@ -495,6 +518,11 @@ body.site-nav-open { overflow: hidden; }
   align-self: center; font-size: 0.88rem;
   color: var(--green-deep); text-decoration: underline;
   text-underline-offset: 4px; white-space: nowrap;
+  transition: color 0.2s ease;
+}
+.sns-link__go:hover,
+.sns-link__go:focus {
+  color: var(--green-deep);
 }
 
 /* ── FAQ ── */
@@ -565,6 +593,13 @@ body.site-nav-open { overflow: hidden; }
   min-height: 50px; font-size: 0.78rem; font-weight: 500;
   color: var(--green-deep); letter-spacing: 0.04em;
   border-right: 1px solid var(--line);
+  cursor: pointer;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+.sticky-cta__btn:not(.is-disabled):hover,
+.sticky-cta__btn:not(.is-disabled):focus {
+  color: var(--green-deep);
+  opacity: 0.85;
 }
 .sticky-cta__btn:last-child { border-right: none; }
 
