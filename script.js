@@ -66,7 +66,7 @@ function initHeroPhotos(photos, farm) {
 function renderFarmData() {
   const farm = window.FARM || {};
 
-  const displayName = textOrPlaceholder(farm.name, "○○農園");
+  const displayName = textOrPlaceholder(farm.name, "篠田ぶどう園");
   const region = farm.region ? `${farm.region}の` : "";
   const products = farm.mainProducts || "農産物";
 
@@ -85,6 +85,14 @@ function renderFarmData() {
   if (ogTitle) ogTitle.content = displayName;
   const ogDesc = document.querySelector('meta[property="og:description"]');
   if (ogDesc) ogDesc.content = description;
+  const ogUrl = document.querySelector('meta[property="og:url"]');
+  if (ogUrl) ogUrl.content = window.location.href.split("#")[0];
+  const ogSiteName = document.querySelector('meta[property="og:site_name"]');
+  if (ogSiteName) ogSiteName.content = displayName;
+  const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+  if (twitterTitle) twitterTitle.content = displayName;
+  const twitterDesc = document.querySelector('meta[name="twitter:description"]');
+  if (twitterDesc) twitterDesc.content = description;
 
   setText("navBrand", displayName);
   setText("footerBrand", displayName);

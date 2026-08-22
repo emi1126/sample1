@@ -20,8 +20,8 @@
 
 | ファイル | 品種 | 出典 | 作者 | ライセンス | 商用利用 |
 |---|---|---|---|---|---|
-| `asset/img/shine-muscat.png` | シャインマスカット | ユーザー提供（物撮り・白背景） | — | 営業用サンプルとして提供 | 可 |
-| `asset/img/kyoho.png` | 巨峰 | ユーザー提供（物撮り・白背景） | — | 営業用サンプルとして提供 | 可 |
+| `asset/img/shine-muscat.jpg` | シャインマスカット | ユーザー提供（営業用サンプル） | — | 営業用サンプル素材 | 可 |
+| `asset/img/kyoho.jpg` | 巨峰 | ユーザー提供（営業用サンプル） | — | 営業用サンプル素材 | 可 |
 | `asset/img/pione.jpg` | ピオーネ | [Pione grapes - Sep 20 2020.jpeg](https://commons.wikimedia.org/wiki/File:Pione_grapes_-_Sep_20_2020.jpeg) | Nesnad | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | 可（クレジット） |
 | `asset/img/fuji-no-kagayaki.jpg` | 富士の輝（代替：紫ぶどう） | [Fresh purple grapes.jpg](https://commons.wikimedia.org/wiki/File:Fresh_purple_grapes.jpg) | Bob Nichols, U.S. Department of Agriculture | Public Domain | 可（クレジット不要） |
 
