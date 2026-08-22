@@ -18,29 +18,20 @@
 
 ## 農産物（品種別）
 
-### シャインマスカット
+| ファイル | 品種 | 出典 | 作者 | ライセンス | 商用利用 |
+|---|---|---|---|---|---|
+| `asset/img/shine-muscat.jpg` | シャインマスカット | [Shine muscat grapes.jpg](https://commons.wikimedia.org/wiki/File:Shine_muscat_grapes.jpg) | Scudsvlad | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | 可（クレジット・同一条件で共有） |
+| `asset/img/kyoho.jpg` | 巨峰 | [Kyoho-grape.jpg](https://commons.wikimedia.org/wiki/File:Kyoho-grape.jpg) | Tomomarusan | [CC BY 2.5](https://creativecommons.org/licenses/by/2.5/) | 可（クレジット） |
+| `asset/img/pione.jpg` | ピオーネ | [Pione grapes - Sep 20 2020.jpeg](https://commons.wikimedia.org/wiki/File:Pione_grapes_-_Sep_20_2020.jpeg) | Nesnad | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | 可（クレジット） |
+| `asset/img/fuji-no-kagayaki.jpg` | 富士の輝（代替：紫ぶどう） | [Fresh purple grapes.jpg](https://commons.wikimedia.org/wiki/File:Fresh_purple_grapes.jpg) | Bob Nichols, U.S. Department of Agriculture | Public Domain | 可（クレジット不要） |
 
-| ファイル | 出典 | 作者 | ライセンス |
-|---|---|---|---|
-| `asset/img/shine-muscat.jpg` | [Shine muscat grapes.jpg](https://commons.wikimedia.org/wiki/File:Shine_muscat_grapes.jpg) | Scudsvlad | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
+## 地図
 
-### 巨峰
-
-| ファイル | 出典 | 作者 | ライセンス |
-|---|---|---|---|
-| `asset/img/kyoho.jpg` | [巨峰.jpg](https://commons.wikimedia.org/wiki/File:%E5%B7%A8%E5%B3%B0.jpg) | GGGLS | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
-
-### ピオーネ
-
-| ファイル | 出典 | 作者 | ライセンス |
-|---|---|---|---|
-| `asset/img/pione.jpg` | [Pione Grapes.jpg](https://commons.wikimedia.org/wiki/File:Pione_Grapes.jpg) | Aw1805 | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
-
-※ Wikimedia Commons上で「ピオーネ」と明記された利用可能な物撮り写真が見つからなかったため、品種名が確認できる同ファイル（畑での撮影）を使用しています。
-
-### 富士の輝
-
-Wikimedia Commons・Pexels・Pixabay等を確認しましたが、「富士の輝」と明記された利用可能な画像は見つかりませんでした。別品種の写真は使用していません。
+| 項目 | 内容 |
+|---|---|
+| 埋め込み | Google Maps「地図を埋め込む」（APIキー不使用） |
+| 対象 | 篠田ぶどう園（35.0891071, 137.1630123） |
+| 取得元 | Google Maps 共有 → 地図を埋め込む |
 
 ## 注意
 

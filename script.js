@@ -278,11 +278,16 @@ function setupMapEmbed(farm) {
   const iframe = document.getElementById("mapEmbed");
   if (!iframe) return;
 
-  const query = farm.mapQuery || farm.address;
-  if (!query) return;
+  const embedUrl = farm.mapEmbedUrl;
+  if (embedUrl) {
+    iframe.src = embedUrl;
+    return;
+  }
 
-  iframe.src = `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed&hl=ja`;
-  iframe.title = `${farm.name || "農園"}の地図`;
+  const query = farm.mapQuery || farm.address;
+  if (query) {
+    iframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(query)}&hl=ja&z=17&output=embed`;
+  }
 }
 
 function setupPhoneLinks(phone) {

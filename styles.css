@@ -479,15 +479,17 @@ body.site-nav-open { overflow: hidden; }
 .access-lead { color: var(--ink-soft); margin-bottom: 28px; font-size: 0.95rem; }
 .map-open__visual {
   aspect-ratio: 16 / 10;
+  background: linear-gradient(180deg, var(--leaf) 0%, #d4e8da 100%);
+  position: relative;
   overflow: hidden;
   margin-bottom: 20px;
-  background: linear-gradient(180deg, var(--leaf) 0%, #d4e8da 100%);
 }
 .map-open__iframe {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   border: 0;
-  display: block;
 }
 .map-open__actions { display: flex; flex-direction: column; gap: 12px; }
 

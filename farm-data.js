@@ -57,7 +57,8 @@ window.FARM = {
     {
       name: "富士の輝",
       season: "8月末頃から収穫開始予定",
-      note: "Threads（2026年）の投稿より。",
+      image: "./asset/img/fuji-no-kagayaki.jpg",
+      note: "Threads（2026年）の投稿より。写真は紫ぶどうの代替イメージです。",
     },
   ],
   purchaseMethods: [
@@ -68,6 +69,8 @@ window.FARM = {
   ],
   address: "〒471-0075 愛知県豊田市日之出町2丁目10-3 山本ビル1階西",
   mapQuery: "篠田ぶどう園 愛知県豊田市日之出町2丁目10-3",
+  mapEmbedUrl:
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3264.7048323524346!2d137.1630123!3d35.0891071!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6004a1bef9ff1393%3A0x81db01ba38a1772!2z56-g55Sw44G244Gp44GG5ZyS!5e0!3m2!1sja!2sjp!4v1787364332589!5m2!1sja!2sjp",
   hours: "10:00～17:00（12:00～13:00は休憩）",
   closedDays: "8月は無休、9月は毎週月曜定休（Instagram投稿より。変更時はInstagramで更新）",
   phone: null,
