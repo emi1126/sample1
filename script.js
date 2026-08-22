@@ -111,6 +111,7 @@ function renderFarmData() {
   setContactInfo(farm);
 
   setupMapLinks(farm);
+  setupMapEmbed(farm);
   setupPhoneLinks(farm.phone);
   setupSns(farm);
   renderFaq("faqList", farm.faq);
@@ -271,6 +272,17 @@ function setupMapLinks(farm) {
     : null;
   ["mapLinkPrimary", "stickyMap"].forEach((id) => setHref(id, mapUrl));
   setHref("mapLinkRoute", routeUrl);
+}
+
+function setupMapEmbed(farm) {
+  const iframe = document.getElementById("mapEmbed");
+  if (!iframe) return;
+
+  const query = farm.mapQuery || farm.address;
+  if (!query) return;
+
+  iframe.src = `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed&hl=ja`;
+  iframe.title = `${farm.name || "農園"}の地図`;
 }
 
 function setupPhoneLinks(phone) {

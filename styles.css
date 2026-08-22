@@ -479,14 +479,15 @@ body.site-nav-open { overflow: hidden; }
 .access-lead { color: var(--ink-soft); margin-bottom: 28px; font-size: 0.95rem; }
 .map-open__visual {
   aspect-ratio: 16 / 10;
-  background: linear-gradient(180deg, var(--leaf) 0%, #d4e8da 100%);
-  opacity: 0.65;
-  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
   margin-bottom: 20px;
+  background: linear-gradient(180deg, var(--leaf) 0%, #d4e8da 100%);
 }
-.map-open__label {
-  font-family: var(--font-display); font-size: 1.1rem;
-  color: var(--green-deep); letter-spacing: 0.06em;
+.map-open__iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
 }
 .map-open__actions { display: flex; flex-direction: column; gap: 12px; }
 

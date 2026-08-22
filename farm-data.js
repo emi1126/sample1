@@ -57,7 +57,7 @@ window.FARM = {
     {
       name: "富士の輝",
       season: "8月末頃から収穫開始予定",
-      note: "Threads（2026年）の投稿より。品種別の写真は準備中です。",
+      note: "Threads（2026年）の投稿より。",
     },
   ],
   purchaseMethods: [
