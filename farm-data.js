@@ -39,13 +39,13 @@ window.FARM = {
     {
       name: "シャインマスカット",
       season: "主力品種",
-      image: "./asset/img/shine-muscat.jpg",
+      image: "./asset/img/shine-muscat.png",
       note: "Instagramプロフィールより。販売状況はInstagram・Threadsでご確認ください。",
     },
     {
       name: "巨峰",
       season: "直売開始時より販売",
-      image: "./asset/img/kyoho.jpg",
+      image: "./asset/img/kyoho.png",
       note: "Threads（2026年）より。最新の在庫はInstagram・Threadsでご確認ください。",
     },
     {
