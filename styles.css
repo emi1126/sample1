@@ -435,6 +435,15 @@ body.site-nav-open { overflow: hidden; }
   color: var(--green-deep); font-weight: 500; padding-top: 2px;
 }
 .visit-details dd { font-size: 0.98rem; line-height: 1.75; word-break: break-word; }
+.visit-details__link {
+  color: inherit;
+  text-decoration: none;
+}
+.visit-details__link:hover,
+.visit-details__link:focus {
+  color: inherit;
+  text-decoration: none;
+}
 .text-link.is-disabled { color: var(--ink-muted); }
 .inline-list li { display: inline; }
 .inline-list li:not(:last-child)::after { content: "、"; }

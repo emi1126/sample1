@@ -46,17 +46,18 @@ window.FARM = {
     {
       name: "巨峰",
       season: "直売開始時より販売",
+      image: "./asset/img/kyoho.jpg",
       note: "Instagram投稿（2026年8月）より、直売開始時にシャインマスカットと並んで販売。最新の在庫はInstagram・Threadsでご確認ください。",
     },
     {
       name: "ピオーネ",
       season: "Instagramプロフィールに記載",
+      image: "./asset/img/pione.jpg",
       note: "Instagramプロフィールで栽培品種として掲載。収穫・販売時期の詳細はInstagram・Threadsでご確認ください。",
     },
     {
       name: "富士の輝",
       season: "Instagram投稿より販売",
-      image: "./asset/img/fuji-no-kagayaki.jpg",
       note: "Instagram投稿より。シャインマスカットとウインクの掛け合わせ品種で、種無しで皮ごと食べられるぶどうです。",
     },
   ],

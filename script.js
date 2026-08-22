@@ -128,7 +128,7 @@ function setContactInfo(farm) {
   const handle = farm.instagramHandle || "@toyota_budou";
 
   if (url) {
-    el.innerHTML = `Instagram DM <a href="${escapeAttr(url)}" class="text-link" target="_blank" rel="noopener noreferrer">${escapeHtml(handle)}</a>`;
+    el.innerHTML = `Instagram<br><a href="${escapeAttr(url)}" class="visit-details__link" target="_blank" rel="noopener noreferrer">${escapeHtml(handle)}</a>`;
     return;
   }
 

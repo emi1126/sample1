@@ -1,0 +1,27 @@
+Product placeholder images — license reference (not displayed on LP)
+
+shine-muscat.jpg
+  Variety: シャインマスカット (Shine Muscat)
+  Source: https://commons.wikimedia.org/wiki/File:Shine_Muscat_(20241101).jpg
+  Author: Fumikas Sagisavas
+  License: CC0 1.0 (Public Domain Dedication)
+  URL: https://upload.wikimedia.org/wikipedia/commons/d/d5/Shine_Muscat_%2820241101%29.jpg
+
+kyoho.jpg
+  Variety: 巨峰 (Kyoho)
+  Source: https://commons.wikimedia.org/wiki/File:Kyoho-grape.jpg
+  Author: Tomomarusan
+  License: CC BY 2.5 (attribution required; documented here only)
+  URL: https://upload.wikimedia.org/wikipedia/commons/3/36/Kyoho-grape.jpg
+
+pione.jpg
+  Variety: ピオーネ (Pione)
+  Source: https://commons.wikimedia.org/wiki/File:Pione_Grapes.jpg
+  Author: Aw1805
+  License: CC BY-SA 4.0 (attribution required; documented here only)
+  URL: https://upload.wikimedia.org/wikipedia/commons/f/f2/Pione_Grapes.jpg
+
+fuji-no-kagayaki.jpg
+  Variety: 富士の輝
+  Status: No CC0 / clearly licensed variety-specific image found on Wikimedia Commons.
+  The LP uses the existing empty product placeholder for this card until a suitable image is available.
