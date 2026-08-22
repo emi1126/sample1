@@ -262,14 +262,14 @@ function setupSns(farm) {
   const igNote = document.getElementById("instagramNote");
   const thNote = document.getElementById("threadsNote");
   if (igNote) {
-    igNote.textContent = farm.instagramUrl
-      ? "今日の収穫・販売中の野菜"
-      : "今日の収穫・販売中の野菜（URL確認後にリンク）";
+    igNote.textContent =
+      farm.instagramNote ||
+      (farm.instagramUrl ? "今日の収穫・販売情報" : "詳細はInstagramをご確認ください");
   }
   if (thNote) {
-    thNote.textContent = farm.threadsUrl
-      ? "農園の日常・お知らせ"
-      : "農園の日常・お知らせ（URL確認後にリンク）";
+    thNote.textContent =
+      farm.threadsNote ||
+      (farm.threadsUrl ? "農園の日常・お知らせ" : "詳細はThreadsをご確認ください");
   }
 }
 
