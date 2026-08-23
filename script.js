@@ -111,16 +111,12 @@ function renderFarmData() {
   setText("heroHours", farm.hours);
   setText("infoClosed", farm.closedDays);
 
-  const phoneLink = document.getElementById("phoneLink");
-  if (phoneLink) phoneLink.textContent = textOrPlaceholder(farm.phone);
-
   renderList("infoPayment", farm.paymentMethods, PLACEHOLDER);
   setText("infoParking", formatParking(farm.parking));
   setContactInfo(farm);
 
   setupMapLinks(farm);
   setupMapEmbed(farm);
-  setupPhoneLinks(farm.phone);
   setupSns(farm);
   renderFaq("faqList", farm.faq);
   renderPhotos("photoGallery", farm.photos);
@@ -296,11 +292,6 @@ function setupMapEmbed(farm) {
   if (query) {
     iframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(query)}&hl=ja&z=17&output=embed`;
   }
-}
-
-function setupPhoneLinks(phone) {
-  const tel = phone ? `tel:${phone.replace(/[^\d+]/g, "")}` : null;
-  setHref("phoneLink", tel);
 }
 
 function setupSns(farm) {

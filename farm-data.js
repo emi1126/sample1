@@ -39,26 +39,24 @@ window.FARM = {
     {
       name: "シャインマスカット",
       season: "主力品種",
-      image: "./asset/img/shine-muscat.png",
-      note: "Instagramプロフィールより。販売状況はInstagram・Threadsでご確認ください。",
+      image: "./asset/img/shine-muscat.jpg",
+      note: "最新の販売状況はInstagramでご確認ください。",
     },
     {
       name: "巨峰",
       season: "直売開始時より販売",
-      image: "./asset/img/kyoho.png",
-      note: "Threads（2026年）より。最新の在庫はInstagram・Threadsでご確認ください。",
+      image: "./asset/img/kyoho.jpg",
+      note: "最新の在庫はInstagramでご確認ください。",
     },
     {
       name: "ピオーネ",
       season: "8月末頃から収穫開始予定",
       image: "./asset/img/pione.jpg",
-      note: "Threads（2026年）の投稿より。",
     },
     {
       name: "富士の輝",
       season: "8月末頃から収穫開始予定",
       image: "./asset/img/fuji-no-kagayaki.jpg",
-      note: "Threads（2026年）の投稿より。写真は紫ぶどうの代替イメージです。",
     },
   ],
   purchaseMethods: [
@@ -72,7 +70,7 @@ window.FARM = {
   mapEmbedUrl:
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3264.7048323524346!2d137.1630123!3d35.0891071!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6004a1bef9ff1393%3A0x81db01ba38a1772!2z56-g55Sw44G244Gp44GG5ZyS!5e0!3m2!1sja!2sjp!4v1787364332589!5m2!1sja!2sjp",
   hours: "10:00～17:00（12:00～13:00は休憩）",
-  closedDays: "8月は無休、9月は毎週月曜定休（Instagram投稿より。変更時はInstagramで更新）",
+  closedDays: "8月は無休、9月は毎週月曜定休。変更がある場合はInstagramでご確認ください。",
   phone: null,
   paymentMethods: ["現金のみ"],
   parking: "2〜3台程度（空いているスペースを利用）",
@@ -94,7 +92,7 @@ window.FARM = {
     },
     {
       q: "駐車場はありますか？",
-      a: "2〜3台程度あります。空いているスペースをご利用ください（Instagram投稿より）。",
+      a: "2〜3台程度あります。空いているスペースをご利用ください。",
     },
     {
       q: "営業時間は？",
@@ -102,11 +100,11 @@ window.FARM = {
     },
     {
       q: "定休日はありますか？",
-      a: "8月は無休、9月は毎週月曜定休です（Instagram投稿より）。変更がある場合はInstagramで更新します。",
+      a: "8月は無休、9月は毎週月曜定休です。変更がある場合はInstagramでご確認ください。",
     },
     {
       q: "支払い方法は？",
-      a: "現金のみです（Instagram投稿より）。",
+      a: "現金のみです。",
     },
     {
       q: "最新の販売状況はどこで確認できますか？",

@@ -23,7 +23,13 @@
 | `asset/img/shine-muscat.jpg` | シャインマスカット | ユーザー提供（営業用サンプル） | — | 営業用サンプル素材 | 可 |
 | `asset/img/kyoho.jpg` | 巨峰 | ユーザー提供（営業用サンプル） | — | 営業用サンプル素材 | 可 |
 | `asset/img/pione.jpg` | ピオーネ | [Pione grapes - Sep 20 2020.jpeg](https://commons.wikimedia.org/wiki/File:Pione_grapes_-_Sep_20_2020.jpeg) | Nesnad | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | 可（クレジット） |
-| `asset/img/fuji-no-kagayaki.jpg` | 富士の輝（代替：紫ぶどう） | [Fresh purple grapes.jpg](https://commons.wikimedia.org/wiki/File:Fresh_purple_grapes.jpg) | Bob Nichols, U.S. Department of Agriculture | Public Domain | 可（クレジット不要） |
+| `asset/img/fuji-no-kagayaki.jpg` | 富士の輝 | [Fresh purple grapes.jpg](https://commons.wikimedia.org/wiki/File:Fresh_purple_grapes.jpg) | Bob Nichols, U.S. Department of Agriculture | Public Domain | 可（クレジット不要） |
+
+## favicon
+
+| ファイル | 内容 | 出典 | ライセンス |
+|---|---|---|---|
+| `asset/images/favicon.svg` / `favicon.png` | ぶどうマーク | 自作（サイトカラー `#3f6650` / `#b8d8c0`） | プロジェクト内作成 |
 
 ## 地図
 
