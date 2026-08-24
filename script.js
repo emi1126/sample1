@@ -189,11 +189,12 @@ function renderProducts(containerId, products) {
     .map((p, i) => {
       const hasImage = Boolean(p.image);
       const imgSrc = hasImage ? assetPath(p.image.startsWith("./") ? p.image : `./${p.image}`) : "";
+      const isFuji = Boolean(p.image && p.image.includes("fuji-no-kagayaki"));
       const photoHtml = hasImage
-        ? `<div class="product-item__photo"><img src="${escapeAttr(imgSrc)}" alt="${escapeAttr(p.name)}" loading="lazy" width="800" height="600" /></div>`
+        ? `<div class="product-item__photo${isFuji ? " product-item__photo--fuji" : ""}"><img src="${escapeAttr(imgSrc)}" alt="${escapeAttr(p.name)}" loading="lazy" width="800" height="600" /></div>`
         : `<div class="product-item__photo product-item__photo--empty" aria-hidden="true"></div>`;
       return `
-      <article class="product-item fade-up">
+      <article class="product-item fade-up${isFuji ? " product-item--fuji" : ""}">
         ${photoHtml}
         <div class="product-item__body">
           <h3 class="product-item__name">${escapeHtml(p.name)}</h3>

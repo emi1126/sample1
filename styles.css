@@ -388,6 +388,17 @@ body.site-nav-open { overflow: hidden; }
   height: auto;
 }
 
+/* 富士の輝：縦長写真を他品種と同程度の4:3枠に収め、房を優先表示 */
+.product-item__photo--fuji {
+  aspect-ratio: 4 / 3;
+}
+.product-item__photo--fuji img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 78%;
+}
+
 .product-item__photo--empty {
   background: linear-gradient(160deg, var(--leaf) 0%, var(--sky) 100%);
   opacity: 0.5;
